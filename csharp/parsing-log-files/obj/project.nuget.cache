@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jI8B7OBGM3XJycxrq1c1lMChcbJ32fi41W8tyXCHGB8JKrrnkzuK7HY76EJdqtzCwLKrspiJ1ZMVPTFQlf/AEQ==",
+  "dgSpecHash": "0IaEt2cXOcSbStx18i+V4fGyfAeoZ/EMIXSpuNCnUA10PebNs5htndM/59tG/kI7C6pPLZimt5MXAkhU7jwEFg==",
   "success": true,
   "projectFilePath": "C:\\Exercism\\exercises\\csharp\\parsing-log-files\\ParsingLogFiles.csproj",
   "expectedPackageFiles": [

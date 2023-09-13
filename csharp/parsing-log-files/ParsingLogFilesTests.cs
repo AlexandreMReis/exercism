@@ -9,7 +9,7 @@ public class ParsingLogFilesTests
     public void IsValidLine_match()
     {
         var lp = new LogParser();
-        Assert.True(lp.IsValidLine("[INF] My Message"));
+        Assert.True(LogParser.IsValidLine("[INF] My Message"));
     }
 
     [Fact]
@@ -17,7 +17,7 @@ public class ParsingLogFilesTests
     public void IsValidLine_no_match()
     {
         var lp = new LogParser();
-        Assert.False(lp.IsValidLine("bad start to [INF] Message"));
+        Assert.False(LogParser.IsValidLine("bad start to [INF] Message"));
     }
 
     [Fact]
@@ -25,7 +25,7 @@ public class ParsingLogFilesTests
     public void SplitLogLine()
     {
         var lp = new LogParser();
-        Assert.Equal(new string[] { "section 1", "section 2", "section 3" }, lp.SplitLogLine("section 1<^>section 2<--->section 3"));
+        Assert.Equal(new string[] { "section 1", "section 2", "section 3" }, LogParser.SplitLogLine("section 1<^>section 2<--->section 3"));
     }
 
     [Fact]
@@ -33,7 +33,7 @@ public class ParsingLogFilesTests
     public void SplitLogLine_Empty()
     {
         var lp = new LogParser();
-        Assert.Equal(new string[] { string.Empty }, lp.SplitLogLine(string.Empty));
+        Assert.Equal(new string[] { string.Empty }, LogParser.SplitLogLine(string.Empty));
     }
 
 
@@ -50,7 +50,7 @@ public class ParsingLogFilesTests
             "[INF] User saw error message \"Unexpected Error\" on page load.",
             "[INF] The message \"Please reset your password\" was ignored by the user"
         };
-        Assert.Equal(2, lp.CountQuotedPasswords(string.Join(Environment.NewLine, lines)));
+        Assert.Equal(2, LogParser.CountQuotedPasswords(string.Join(Environment.NewLine, lines)));
     }
 
     [Fact]
@@ -59,7 +59,7 @@ public class ParsingLogFilesTests
     {
         var lp = new LogParser();
         string input = "[INF] end-of-line23033 Network Falure end-of-line27";
-        Assert.Equal("[INF]  Network Falure ", lp.RemoveEndOfLineText(input));
+        Assert.Equal("[INF]  Network Falure ", LogParser.RemoveEndOfLineText(input));
     }
 
     [Fact]
@@ -81,6 +81,6 @@ public class ParsingLogFilesTests
             "--------: [INF] password KeyToTheCastle for nobody",
             "password123: [INF] password password123 for everybody"
         };
-        Assert.Equal(expected, lp.ListLinesWithPasswords(lines));
+        Assert.Equal(expected, LogParser.ListLinesWithPasswords(lines));
     }
 }
